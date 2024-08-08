@@ -33,7 +33,7 @@ def predict_placement_probability(features):
     return probabilities[0][1]
 
 # Function to store user input in a CSV file
-def store_user_input(data, filename='user_data/user_inputdata.csv'):
+def store_user_input(data, filename='user/user_inputdata.csv'):
     df = pd.DataFrame([data], columns=[
         'SSC_Marks', 'HSC_Marks', 'Degree_CGPA', 'AptitudeTestScore', 'Projects',
         'Workshops', 'SoftSkillsRating', 'ExtracurricularActivities', 'PlacementTraining',
