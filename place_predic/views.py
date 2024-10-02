@@ -33,10 +33,8 @@ def index(request):
 # Process form input and return predictions
 def predict(request):
     if request.method == 'POST':
-        # Get form data
+        # Get form data and extract the features (same as before)
         data = request.POST
-        
-        # Extract features from the form input
         ssc_p = float(data.get('ssc'))
         hsc_p = float(data.get('hsc'))
         degree_cgpa = float(data.get('cgpa'))
@@ -63,11 +61,9 @@ def predict(request):
         predicted_salary = predict_salary(salary_features)
         placement_probability = predict_placement_probability(placement_features)
 
-        # Render the results on the same page (index.html)
+        # Redirect to the analysis section
         return render(request, 'index.html', {
             'salary': round(predicted_salary, 2),
             'placement_probability': round(placement_probability * 100, 2),
-        })
-    
-    # If GET request, just render the form
-    return render(request, 'index.html')
+            'show_analysis': True,  #
+        }, status=200)
